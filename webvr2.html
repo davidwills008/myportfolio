@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>A-Frame</title>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" ></a-sphere>
+    </a-scene>
+
+    <script>
+    $ = (queryString) => document.querySelector(queryString);
+     
+
+     const shiftHue = (hue) => (hue + 1) % 360;
+    
+    let hue = 0;
+
+     const animate = () => {
+         hue = shiftHue(hue);
+         const color = 'hsl(${hue}, 100%, 50%)';
+        $('a-sphere').setAttribute('color', color);
+        const position = '0 ${1.5 + math.sin(Date.now() / 1000)} -2';
+        $('a-sphere').setAttribute('psition', position);
+    
+
+        requestAnimationFrame(animate);
+
+     };
+    
+
+    requestAnimationFrame(animate);
+    
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+  
